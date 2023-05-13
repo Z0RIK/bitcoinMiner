@@ -9,6 +9,8 @@
 #include "sha256.h"
 #include "utility.h"
 
+/*
+
 inline bool zeroesCount(const std::array<uint32_t, 8>& hash, const uint32_t& difficulty)
 {
 	for (size_t i = 0; i < difficulty / 8; i++)
@@ -18,6 +20,7 @@ inline bool zeroesCount(const std::array<uint32_t, 8>& hash, const uint32_t& dif
 
 }
 
+*/
 uint32_t mine(	uint32_t nonce,
 				uint32_t difficulty,
 				const std::string& version,
