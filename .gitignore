@@ -4,6 +4,8 @@
 # VS solution files
 *.sln
 *.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
 
 # Compiled Object files
 *.slo
