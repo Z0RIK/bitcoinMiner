@@ -36,7 +36,6 @@
 *.exe
 *.out
 *.app
-/x64/Release
-/.vs/Bitcoin_miner/v17
-/x64/Debug
-/.vs/Bitcoin_miner/FileContentIndex
+
+/x64
+/.vs
