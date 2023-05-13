@@ -1,6 +1,10 @@
 # Prerequisites
 *.d
 
+# VS solution files
+*.sln
+*.vcxproj
+
 # Compiled Object files
 *.slo
 *.lo
