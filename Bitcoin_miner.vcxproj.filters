@@ -15,21 +15,21 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="src\main.cpp">
       <Filter>Файлы ресурсов</Filter>
     </ClCompile>
-    <ClCompile Include="sha256.cpp">
+    <ClCompile Include="src\sha256.cpp">
       <Filter>Файлы ресурсов</Filter>
     </ClCompile>
-    <ClCompile Include="utility.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClCompile>
-    <ClCompile Include="utility.cpp">
+    <ClCompile Include="src\utility.cpp">
       <Filter>Файлы ресурсов</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="sha256.h">
+    <ClInclude Include="src\utility.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="src\sha256.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
