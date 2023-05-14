@@ -53,23 +53,9 @@ void printVector(const std::vector<uint8_t>& input)
 
 void printVector(const std::vector<uint32_t>& input)
 {
-#if 0
 	for (const auto& it : input)
-		std::cout << it << ' ';
+		std::cout << std::hex << it << ' ';
 	std::cout << std::endl;
-#else
-
-	for (const auto& it : input)
-	{
-		std::cout << std::hex << (int)((it >> 3 * 8) & 0xFF) << ' ';
-		std::cout << std::hex << (int)((it >> 2 * 8) & 0xFF) << ' ';
-		std::cout << std::hex << (int)((it >> 1 * 8) & 0xFF) << ' ';
-		std::cout << std::hex << (int)((it >> 0 * 8) & 0xFF) << ' ';
-		std::cout << '\n';
-	}
-
-	std::cout << std::endl;
-#endif
 }
 
 void printArrayHex(const std::array<uint32_t, 8>& input)
