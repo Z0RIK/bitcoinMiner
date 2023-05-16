@@ -1,0 +1,3 @@
+C:/Users/Zorik/Documents/Visual Studio 2022/Projects/Bitcoin_miner/out/build/x64-Debug/CMakeFiles/Bitcoin_miner.dir
+C:/Users/Zorik/Documents/Visual Studio 2022/Projects/Bitcoin_miner/out/build/x64-Debug/CMakeFiles/edit_cache.dir
+C:/Users/Zorik/Documents/Visual Studio 2022/Projects/Bitcoin_miner/out/build/x64-Debug/CMakeFiles/rebuild_cache.dir

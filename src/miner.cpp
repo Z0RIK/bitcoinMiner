@@ -1,6 +1,7 @@
 #include "miner.h"
 
-uint32_t mine(uint32_t nonceStart,
+uint32_t mine(	
+	uint32_t nonceStart,
 	uint32_t difficulty,			// TODO add difficulty
 	const std::string& version,
 	const std::string& prevHash,

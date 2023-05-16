@@ -38,26 +38,24 @@ std::vector<uint32_t> stringToUint32Vector(const std::string& inputString)
 	return result;
 }
 
-void padUint32Array(std::vector<uint32_t>& inputArray, uint64_t sizeBytes)
+void padUint32Vector(std::vector<uint32_t>& inputVector, const uint64_t& sizeBytes)
 {
 	uint64_t sizeBits = sizeBytes * 8;
 
 	if (sizeBits % 512 != 448)
 	{
-		sizeBytes;
-
 		uint64_t mod = sizeBytes & 3;
 		uint64_t div = sizeBytes >> 2;
 
-		if (!mod) inputArray.push_back(0);
-		inputArray[div] |= ((uint32_t)0x80 << (3 - mod) * 8);
+		if (!mod) inputVector.push_back(0);
+		inputVector[div] |= ((uint32_t)0x80 << (3 - mod) * 8);
 
-		while (inputArray.size() % 16 != 14)
-			inputArray.push_back(0);
+		while (inputVector.size() % 16 != 14)
+			inputVector.push_back(0);
 	}
 
-	inputArray.push_back((sizeBits >> 4 * 8) & 0xFFFFFFFF);
-	inputArray.push_back(sizeBits & 0xFFFFFFFF);
+	inputVector.push_back((sizeBits >> 4 * 8) & 0xFFFFFFFF);
+	inputVector.push_back(sizeBits & 0xFFFFFFFF);
 }
 
 inline uint32_t rotateRight(const uint32_t& target, const uint8_t& amount)
@@ -102,7 +100,7 @@ std::array<uint32_t, 8> SHA256(const std::string& inputString)
 	std::vector<uint32_t> inputUint32 = stringToUint32Vector(inputString);
 
 	// pad input
-	padUint32Array(inputUint32, inputString.size());
+	padUint32Vector(inputUint32, inputString.size());
 
 	// init H values
 	H = {
@@ -171,7 +169,7 @@ std::array<uint32_t, 8> SHA256(const std::vector<uint32_t>& inputVector, const s
 {
 	// pad input
 	std::vector<uint32_t> padedInput(inputVector);
-	padUint32Array(padedInput, sizeBytes);
+	padUint32Vector(padedInput, sizeBytes);
 
 	// init H values
 	H = {
