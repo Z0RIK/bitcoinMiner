@@ -54,28 +54,28 @@ build CMakeFiles\Bitcoin_miner.dir\src\main.cpp.obj: CXX_COMPILER__Bitcoin_miner
   OBJECT_DIR = CMakeFiles\Bitcoin_miner.dir
   OBJECT_FILE_DIR = CMakeFiles\Bitcoin_miner.dir\src
   TARGET_COMPILE_PDB = CMakeFiles\Bitcoin_miner.dir\
-  TARGET_PDB = Bitcoin_miner.pdb
+  TARGET_PDB = bin\Bitcoin_miner.pdb
 
 build CMakeFiles\Bitcoin_miner.dir\src\miner.cpp.obj: CXX_COMPILER__Bitcoin_miner_Debug C$:\Users\Zorik\Documents\Visual$ Studio$ 2022\Projects\Bitcoin_miner\src\miner.cpp || cmake_object_order_depends_target_Bitcoin_miner
   FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
   OBJECT_DIR = CMakeFiles\Bitcoin_miner.dir
   OBJECT_FILE_DIR = CMakeFiles\Bitcoin_miner.dir\src
   TARGET_COMPILE_PDB = CMakeFiles\Bitcoin_miner.dir\
-  TARGET_PDB = Bitcoin_miner.pdb
+  TARGET_PDB = bin\Bitcoin_miner.pdb
 
 build CMakeFiles\Bitcoin_miner.dir\src\sha256.cpp.obj: CXX_COMPILER__Bitcoin_miner_Debug C$:\Users\Zorik\Documents\Visual$ Studio$ 2022\Projects\Bitcoin_miner\src\sha256.cpp || cmake_object_order_depends_target_Bitcoin_miner
   FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
   OBJECT_DIR = CMakeFiles\Bitcoin_miner.dir
   OBJECT_FILE_DIR = CMakeFiles\Bitcoin_miner.dir\src
   TARGET_COMPILE_PDB = CMakeFiles\Bitcoin_miner.dir\
-  TARGET_PDB = Bitcoin_miner.pdb
+  TARGET_PDB = bin\Bitcoin_miner.pdb
 
 build CMakeFiles\Bitcoin_miner.dir\src\utility.cpp.obj: CXX_COMPILER__Bitcoin_miner_Debug C$:\Users\Zorik\Documents\Visual$ Studio$ 2022\Projects\Bitcoin_miner\src\utility.cpp || cmake_object_order_depends_target_Bitcoin_miner
   FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
   OBJECT_DIR = CMakeFiles\Bitcoin_miner.dir
   OBJECT_FILE_DIR = CMakeFiles\Bitcoin_miner.dir\src
   TARGET_COMPILE_PDB = CMakeFiles\Bitcoin_miner.dir\
-  TARGET_PDB = Bitcoin_miner.pdb
+  TARGET_PDB = bin\Bitcoin_miner.pdb
 
 
 # =============================================================================
@@ -83,19 +83,19 @@ build CMakeFiles\Bitcoin_miner.dir\src\utility.cpp.obj: CXX_COMPILER__Bitcoin_mi
 
 
 #############################################
-# Link the executable Bitcoin_miner.exe
+# Link the executable bin\Bitcoin_miner.exe
 
-build Bitcoin_miner.exe: CXX_EXECUTABLE_LINKER__Bitcoin_miner_Debug CMakeFiles\Bitcoin_miner.dir\src\main.cpp.obj CMakeFiles\Bitcoin_miner.dir\src\miner.cpp.obj CMakeFiles\Bitcoin_miner.dir\src\sha256.cpp.obj CMakeFiles\Bitcoin_miner.dir\src\utility.cpp.obj
+build bin\Bitcoin_miner.exe: CXX_EXECUTABLE_LINKER__Bitcoin_miner_Debug CMakeFiles\Bitcoin_miner.dir\src\main.cpp.obj CMakeFiles\Bitcoin_miner.dir\src\miner.cpp.obj CMakeFiles\Bitcoin_miner.dir\src\sha256.cpp.obj CMakeFiles\Bitcoin_miner.dir\src\utility.cpp.obj
   FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
   LINK_FLAGS = /machine:x64 /debug /INCREMENTAL /subsystem:console
   LINK_LIBRARIES = kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib
   OBJECT_DIR = CMakeFiles\Bitcoin_miner.dir
-  POST_BUILD = cmd.exe /C "cd /D "C:\Users\Zorik\Documents\Visual Studio 2022\Projects\Bitcoin_miner\out\build\x64-Debug" && C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -noprofile -executionpolicy Bypass -file C:/Users/Zorik/Documents/dev/vcpkg/scripts/buildsystems/msbuild/applocal.ps1 -targetBinary "C:/Users/Zorik/Documents/Visual Studio 2022/Projects/Bitcoin_miner/out/build/x64-Debug/Bitcoin_miner.exe" -installedDir C:/Users/Zorik/Documents/dev/vcpkg/installed/x64-windows/debug/bin -OutVariable out"
+  POST_BUILD = cmd.exe /C "cd /D "C:\Users\Zorik\Documents\Visual Studio 2022\Projects\Bitcoin_miner\out\build\x64-Debug" && C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -noprofile -executionpolicy Bypass -file C:/Users/Zorik/Documents/dev/vcpkg/scripts/buildsystems/msbuild/applocal.ps1 -targetBinary "C:/Users/Zorik/Documents/Visual Studio 2022/Projects/Bitcoin_miner/out/build/x64-Debug/bin/Bitcoin_miner.exe" -installedDir C:/Users/Zorik/Documents/dev/vcpkg/installed/x64-windows/debug/bin -OutVariable out"
   PRE_LINK = cd .
   TARGET_COMPILE_PDB = CMakeFiles\Bitcoin_miner.dir\
-  TARGET_FILE = Bitcoin_miner.exe
-  TARGET_IMPLIB = Bitcoin_miner.lib
-  TARGET_PDB = Bitcoin_miner.pdb
+  TARGET_FILE = bin\Bitcoin_miner.exe
+  TARGET_IMPLIB = lib\Bitcoin_miner.lib
+  TARGET_PDB = bin\Bitcoin_miner.pdb
 
 
 #############################################
@@ -123,7 +123,9 @@ build rebuild_cache: phony CMakeFiles\rebuild_cache.util
 # =============================================================================
 # Target aliases.
 
-build Bitcoin_miner: phony Bitcoin_miner.exe
+build Bitcoin_miner: phony bin\Bitcoin_miner.exe
+
+build Bitcoin_miner.exe: phony bin\Bitcoin_miner.exe
 
 # =============================================================================
 # Folder targets.
@@ -133,7 +135,7 @@ build Bitcoin_miner: phony Bitcoin_miner.exe
 #############################################
 # Folder: C:/Users/Zorik/Documents/Visual Studio 2022/Projects/Bitcoin_miner/out/build/x64-Debug
 
-build all: phony Bitcoin_miner.exe
+build all: phony bin\Bitcoin_miner.exe
 
 # =============================================================================
 # Unknown Build Time Dependencies.

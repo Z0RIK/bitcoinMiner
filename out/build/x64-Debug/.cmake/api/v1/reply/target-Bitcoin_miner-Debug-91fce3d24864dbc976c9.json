@@ -2,10 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "Bitcoin_miner.exe"
+			"path" : "bin/Bitcoin_miner.exe"
 		},
 		{
-			"path" : "Bitcoin_miner.pdb"
+			"path" : "bin/Bitcoin_miner.pdb"
 		}
 	],
 	"backtrace" : 2,
@@ -29,7 +29,7 @@
 			{
 				"command" : 1,
 				"file" : 1,
-				"line" : 10,
+				"line" : 15,
 				"parent" : 0
 			},
 			{
