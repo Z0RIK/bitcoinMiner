@@ -107,3 +107,25 @@ bool lessOrEqual(const std::array<uint32_t, 8>& hash, const std::array<uint32_t,
 
 	return true;
 }
+
+std::string hashToString(std::array<uint32_t, 8> inputHash)
+{
+	std::string result;
+
+	auto decToHex = [](const uint8_t& inputDec) -> char {
+		if (inputDec < 10) return '0' + inputDec;
+		else return 'A' + inputDec % 10;
+	};
+
+	for (auto& it : inputHash)
+	{
+		for (size_t i = 0; i < 4; i++)
+		{
+			uint8_t current = it >> (3 - i) * 8 & 0xFF;
+			result.push_back(decToHex(current >> 4 & 0xF));
+			result.push_back(decToHex(current & 0xF));
+		}
+	}
+
+	return result;
+}

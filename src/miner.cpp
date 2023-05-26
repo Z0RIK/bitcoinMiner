@@ -3,8 +3,6 @@
 uint32_t mine(	
 	uint32_t nonceStart, uint32_t maxNonceOffset, BlockTemplate* header)
 {
-	auto start = std::chrono::high_resolution_clock::now();
-
 	std::vector<uint32_t> blockHeader = hexToUintVector(header->version + header->prevBlockHash + header->merkleRoot + header->timeStamp + header->nBits);
 	blockHeader.push_back(nonceStart);
 
@@ -22,6 +20,8 @@ uint32_t mine(
 	memcpy(&padedHash1[0], &SHA256(padedBlockheader)[0], sizeof(uint32_t) * 8);
 	padedHash1[8] = ((uint32_t)0x80 << 3 * 8);
 	padedHash1[15] = 4 * 8 * 8;
+	
+	auto start = std::chrono::high_resolution_clock::now();
 
 	for (uint32_t nonce = nonceStart; nonce < nonceStart + maxNonceOffset; nonce++)
 	{
@@ -32,11 +32,11 @@ uint32_t mine(
 		if (hash2[7] == 0 && lessOrEqual(hash2, target))	// min target && actual target
 		{
 			auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now() - start);
+			
 			std::cout << "Nonce: " << std::hex << nonce << std::endl;
 			std::cout << "Average hashrate: " << std::dec << (nonce - nonceStart) / (duration.count() + 1) << "Mh/s" << std::endl;
-			std::cout << "Resulting hash: ";
-			for (auto it : hash2) std::cout << std::hex << it << ' ';
-			std::cout << std::endl;
+			std::cout << "Resulting hash: " << hashToString(hash2) << std::endl;
+
 			return nonce;
 		}
 	}

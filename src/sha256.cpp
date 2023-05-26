@@ -58,37 +58,37 @@ void padUint32Vector(std::vector<uint32_t>& inputVector, const uint64_t& sizeByt
 	inputVector.push_back(sizeBits & 0xFFFFFFFF);
 }
 
-inline uint32_t rotateRight(const uint32_t& target, const uint8_t& amount)
+ uint32_t rotateRight(const uint32_t& target, const uint8_t& amount)
 {
 	return (target >> amount) | (target << (32 - amount));
 }
 
-inline uint32_t sigma0(const uint32_t& input)
+uint32_t sigma0(const uint32_t& input)
 {
 	return rotateRight(input, 7) ^ rotateRight(input, 18) ^ (input >> 3);
 }
 
-inline uint32_t sigma1(const uint32_t& input)
+uint32_t sigma1(const uint32_t& input)
 {
 	return rotateRight(input, 17) ^ rotateRight(input, 19) ^ (input >> 10);
 }
 
-inline uint32_t ep0(const uint32_t& input)
+uint32_t ep0(const uint32_t& input)
 {
 	return rotateRight(input, 2) ^ rotateRight(input, 13) ^ rotateRight(input, 22);
 }
 
-inline uint32_t ep1(const uint32_t& input)
+uint32_t ep1(const uint32_t& input)
 {
 	return rotateRight(input, 6) ^ rotateRight(input, 11) ^ rotateRight(input, 25);
 }
 
-inline uint32_t choose(const uint32_t& decisionMask, uint32_t a, uint32_t b)
+uint32_t choose(const uint32_t& decisionMask, uint32_t a, uint32_t b)
 {
 	return (a & decisionMask) | (b & ~decisionMask);
 }
 
-inline uint32_t majority(const uint32_t& a, const uint32_t& b, const uint32_t& c)
+uint32_t majority(const uint32_t& a, const uint32_t& b, const uint32_t& c)
 {
 	return ((a & b) ^ (a & c) ^ (b & c));
 }

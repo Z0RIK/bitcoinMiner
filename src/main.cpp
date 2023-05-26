@@ -23,7 +23,13 @@ int main()
 
 	std::string expectedNonce = "1DAC2B7C"; // 497822588
 
-	mine(497022588, 100000000, &genesis);
+	mine(475000000, 100000000, &genesis);
+
+	std::string hello = "Hello, world!";
+	std::cout << "Hash of a string: " << hashToString(SHA256(hello)) << std::endl; // hashing string
 	
+	std::string hex = "4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b";
+	std::cout << "Hash of a hex string: " << hashToString(SHA256(hexToUintVector(hex), hex.size() / 2)) << std::endl; // hashing hex string
+
 	return EXIT_SUCCESS;
 }
