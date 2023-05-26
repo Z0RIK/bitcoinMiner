@@ -25,11 +25,11 @@ uint32_t mine(
 
 	for (uint32_t nonce = nonceStart; nonce < nonceStart + maxNonceOffset; nonce++)
 	{
-		padedBlockheader[19] = nonce;												// iterating nonce in the blockheader
+		padedBlockheader[19] = nonce;	// iterating nonce in the blockheader
 		memcpy(&padedHash1[0], &SHA256(padedBlockheader)[0], sizeof(uint32_t) * 8);	// hashing blockheader once
-		hash2 = SHA256(padedHash1);													// hashing blockheader second time
+		hash2 = SHA256(padedHash1);	// hashing blockheader second time
 
-		if (hash2[7] == 0 && lessOrEqual(hash2, target))							// min target && actual target
+		if (hash2[7] == 0 && lessOrEqual(hash2, target))	// min target && actual target
 		{
 			auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now() - start);
 			std::cout << "Nonce: " << std::hex << nonce << std::endl;
