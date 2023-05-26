@@ -44,25 +44,66 @@ std::vector<uint32_t> hexToUintVector(std::string input)
 	return result;
 }
 
-void printVector(const std::vector<uint8_t>& input)
+inline uint32_t reverse32(const uint32_t& input)
 {
-	for (const auto& it : input)
-		std::cout << (char)it << ' ';
-	std::cout << std::endl;
+	uint32_t result{};
+	for (size_t i = 0; i < 4; i++)
+		result |= ((input >> i * 8) & 0xFF) << (3 - i) * 8;
+	return result;
 }
 
-void printVector(const std::vector<uint32_t>& input)
+std::array<uint32_t, 8> reverse256(const std::array<uint32_t, 8>& input)
 {
-	for (const auto& it : input)
-		std::cout << std::hex << it << ' ';
-	std::cout << std::endl;
+	std::array<uint32_t, 8> result = {};
+
+	for (size_t i = 0; i < 8; i++)
+		result[i] = reverse32(input[7 - i]);
+
+	return result;
 }
 
-void printArrayHex(const std::array<uint32_t, 8>& input)
+std::string reverseHex(const std::string& input)
 {
-	for (const uint32_t& it : input)
+	std::string result(input.size(), ' ');
+
+	for (size_t i = 0, n = input.size(); i < input.size(); i += 2)
 	{
-		std::cout << std::hex << it << ' ';
+		char a = input[n - 2 - i];
+		char b = input[n - 1 - i];
+		result[i] = a;
+		result[i + 1] = b;
 	}
-	std::cout << std::endl;
+
+	return result;
+}
+
+std::array<uint32_t, 8> bitsToTarget(std::string bitsHex)
+{
+	if (bitsHex.size() != 8) 
+		std::cerr << "ERROR::bitsToTarget::wrong input: " << bitsHex << std::endl;
+
+	std::array<uint32_t, 8> result;
+	std::string hexTarget(64, '0');
+	uint8_t length{};
+
+	for (auto& it : bitsHex) it = std::tolower(it);
+
+	length = ((bitsHex[6] <= '9') ? bitsHex[6] - '0' : bitsHex[6] - 'a' + 10) << 4;
+	length |= (bitsHex[7] <= '9') ? bitsHex[7] - '0' : bitsHex[7] - 'a' + 10;
+
+	memcpy(&hexTarget[length * 2 - 6], &bitsHex[0], sizeof(char) * 6);
+	memcpy(&result[0], &hexToUintVector(hexTarget)[0], sizeof(uint32_t) * 8);
+
+	return result;
+}
+
+bool lessOrEqual(const std::array<uint32_t, 8>& hash, const std::array<uint32_t, 8>& target)
+{
+	for (int i = 7; i >= 0; i--)
+	{
+		if (reverse32(hash[i]) > reverse32(target[i])) return false;
+		if (reverse32(hash[i]) < reverse32(target[i])) return true;
+	}
+
+	return true;
 }
