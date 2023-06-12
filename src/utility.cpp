@@ -20,11 +20,11 @@ std::string hexToString(std::string input)
 
 std::vector<uint32_t> hexToUintVector(std::string input)
 {
-	for (char& it : input)
-		it = std::tolower(it);
-
 	std::vector<uint32_t> result;
 	result.reserve(input.size() / 8 + 1);
+
+	for (char& it : input)
+		it = std::tolower(it);
 
 	for (size_t i = 0, mod = 0, div = 0; i < input.size() / 2; i++)
 	{

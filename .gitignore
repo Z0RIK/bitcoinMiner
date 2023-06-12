@@ -38,5 +38,7 @@
 *.app
 
 /x64
-/.vs
+/.vscode
 /out
+/build
+

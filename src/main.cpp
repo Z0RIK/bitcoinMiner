@@ -5,15 +5,63 @@
 
 #include "miner.h"
 
-size_t curlWriteCallback(char* content, size_t size, size_t nmemb, std::string* response)
-{
-	size_t totalSize = size * nmemb;
-	response->append(content, totalSize);
-	return totalSize;
-}
+const char* help = 
+	"Usage: bitcoinMiner [OPTIONS]\n"
+    "Options:\n"
+    "\t--sha256 <input>     Compute the SHA256 hash of the input string\n"
+    "\t--sha256hex <input>  Compute the SHA256 hash of the input hex string.\n"
+    "\t--help               Print this help message.\n";
 
-int main()
+int main(int argc, char* argv[])
 {
+	for(size_t i = 1; i < argc; i++)
+	{
+		if(!strncmp(argv[i], "--sha256", 9))
+		{
+			if(i + 1 < argc)
+			{
+				std::string argvString(argv[i + 1]);
+
+				std::cout << "input: " << argvString << std::endl;
+				std::cout << "Hash: " << hashToString(SHA256(argvString)) << std::endl;
+				i++;
+				continue;
+			}
+		}
+		else if(!strncmp(argv[i], "--sha256hex", 11))
+		{
+			if(i + 1 < argc)
+			{
+				std::string argvString(argv[i + 1]);
+
+				if(argvString.size() % 2)
+				{
+					std::cerr << "ERROR::Invalid hex string" << std::endl;
+					return EXIT_FAILURE;
+				}
+
+				for (char& it : argvString)
+				{
+					it = std::tolower(it);
+					if(it < '0' || ('9' < it && it < 'a') || 'f' < it)
+					{
+						std::cerr << "ERROR::Invalid hex string" << std::endl;
+						return EXIT_FAILURE;
+					}
+				}
+
+				std::cout << "input hex: " << argvString << std::endl;
+				std::cout << "Hash: " << hashToString(SHA256(hexToUintVector(argvString), argvString.size() / 2)) << std::endl;
+				i++;
+				continue;
+			}
+		}
+			std::cout << help << std::endl;
+			break;
+	}
+
+	// bitcoin miner example
+	/*
 	BlockTemplate genesis{
 		reverseHex("00000001"), // reverseHex converts hexString from big-endian to little-endian
 		reverseHex("0000000000000000000000000000000000000000000000000000000000000000"),
@@ -24,12 +72,8 @@ int main()
 	std::string expectedNonce = "1DAC2B7C"; // 497822588
 
 	mine(475000000, 100000000, &genesis);
-
-	std::string hello = "Hello, world!";
-	std::cout << "Hash of a string: " << hashToString(SHA256(hello)) << std::endl; // hashing string
-	
-	std::string hex = "4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b";
-	std::cout << "Hash of a hex string: " << hashToString(SHA256(hexToUintVector(hex), hex.size() / 2)) << std::endl; // hashing hex string
+	*/
 
 	return EXIT_SUCCESS;
+
 }
