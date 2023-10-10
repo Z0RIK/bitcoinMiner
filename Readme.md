@@ -11,6 +11,6 @@ This is a pet project focused on implementing the SHA-256 hash function
 ## Command line arguments for hashing strings
 Usage: bitcoinMiner [OPTIONS]  
   Options:  
-  --sha256 <input>     Compute the SHA256 hash of the input string.  
-  --sha256hex <input>  Compute the SHA256 hash of the input hex string.  
-  --help               Print help message.  
+    sha256 <input>     Compute the SHA256 hash of the input string.  
+    sha256hex <input>  Compute the SHA256 hash of the input hex string.  
+    help               Print help message.  
