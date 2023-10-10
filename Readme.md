@@ -9,8 +9,9 @@ This is a pet project focused on implementing the SHA-256 hash function
 3. bitsToTarget function that converts a short target representation to the full target.
 
 ## Command line arguments for hashing strings
-Usage: bitcoinMiner [OPTIONS]  
+Usage: bitcoinMiner [Options]  
+
   Options:  
-    sha256 <input>     Compute the SHA256 hash of the input string.  
-    sha256hex <input>  Compute the SHA256 hash of the input hex string.  
-    help               Print help message.  
+    1. sha256 <input>     Compute the SHA256 hash of the input string.  
+    2. sha256hex <input>  Compute the SHA256 hash of the input hex string.  
+    3. help               Print help message.  
